@@ -38,6 +38,7 @@ export async function handler(event, context) {
 
     const apiKey = process.env.OPENWEATHER_API_KEY;
     const geminiKey = process.env.GEMINI_API_KEY;
+    console.log('Gemini key loaded?', !!geminiKey);
 
     
     const weatherResponse = await fetch(
@@ -73,6 +74,8 @@ try {
     }
   );
   const llmData = await llmResponse.json();
+  console.log('gemini response:', JSON.stringify(llmData, null, 2));
+  
   outfit = llmData?.candidates?.[0]?.content?.parts?.[0]?.text;
 } catch (err) {
   console.error("LLM call failed:", err);
