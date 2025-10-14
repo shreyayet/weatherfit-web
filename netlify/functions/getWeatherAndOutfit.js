@@ -1,21 +1,21 @@
 // netlify/functions/getWeatherAndOutfit.js
-//import fetch from 'node-fetch';
 
+// rule based function
 function ruleBasedOutfit(temp, description, windSpeed) {
   const descLower = description.toLowerCase();
   let suggestion = "";
 
-  if (temp < 40) { // < 40°F
+  if (temp < 40) { 
     suggestion = "It's cold! 🥶 Bring a coat before you head out!";
-  } else if (temp >= 40 && temp < 55) { // 40–55°F
-    if (descLower.includes("wind") || windSpeed > 20) { // 20 mph
+  } else if (temp >= 40 && temp < 55) { 
+    if (descLower.includes("wind") || windSpeed > 20) { 
       suggestion = "It’s chilly and windy! 🌬️ Try pairing jeans with a sweater. Layer up!";
     } else {
       suggestion = "It's a bit chilly! Wear a sweater with jeans or leggings. Bring layers just in case. If you want to be comfy, wear a sweat set!";
     }
-  } else if (temp >= 55 && temp < 70) { // 55–70°F
+  } else if (temp >= 55 && temp < 70) { 
     suggestion = "It's nice out! 🌤️ Bring a light jacket or wear a long sleeve shirt for when it gets cooler later.";
-  } else if (temp >= 70 && temp < 80) { // 70–80°F
+  } else if (temp >= 70 && temp < 80) { 
     suggestion = "It’s warm! 🌞 Wear a flowy dress today! Or a cute shirt and shorts.";
   } else {
     suggestion = "It’s hot! 🍳 Go for light fabrics like tank tops, dresses, or athletic wear.";
