@@ -60,7 +60,8 @@ export async function handler(event, context) {
 
     
     const prompt = `The current temperature in ${city} is ${temperature}°F with ${description} and wind speed of ${windSpeed} mph. 
-    Suggest an short, helpful outfit recommendation for someone going outside today.`;
+    Suggest a short, helpful outfit recommendation for someone going outside today.
+    Do not restate the weather details in your response, only provide the outfit suggestion directly.`;
 
     let outfit;
 try {
