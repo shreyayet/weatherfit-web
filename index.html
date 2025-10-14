@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WeatherFit</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1 class="brand">WeatherFit</h1>
+
+      <label for="city" class="prompt"> 📍 What city are you in?</label>
+      <div class="search-row">
+        <input id="city" type="text" placeholder="e.g., Chicago" />
+        <button id="go"> 🔍 Get outfit suggestion</button>
+      </div>
+
+      <p class="helper">
+        Enter a city in the search box below to get a tailored outfit suggestion based on the weather
+      </p>
+
+      <section id="result" class="card" hidden>
+        <!-- we’ll fill this with weather + outfit text -->
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
