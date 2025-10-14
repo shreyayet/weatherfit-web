@@ -31,6 +31,7 @@ function ruleBasedOutfit(temp, description, windSpeed) {
 export async function handler(event, context) {
   try {
     const { city } = JSON.parse(event.body);
+    const formattedCity = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
 
     if (!city) {
       return { statusCode: 400, body: 'City is required' };
@@ -77,19 +78,24 @@ try {
   console.log('gemini response:', JSON.stringify(llmData, null, 2));
   
   outfit = llmData?.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (outfit) {
+    outfit = outfit.replace(/\*/g, "");
+    outfit = outfit.trim();
+  }
 } catch (err) {
   console.error("LLM call failed:", err);
 }
 
-// 🧥 Rule-based fallback
+
 if (!outfit) {
   outfit = ruleBasedOutfit(temperature, description, windSpeed);
+  outfit = outfit.trim();
 }
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        city,
+        city: formattedCity,
         temperature,
         description,
         outfit,
