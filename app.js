@@ -29,7 +29,7 @@ goBtn.addEventListener('click', async () => {
 
     result.innerHTML = `
       <h2>${data.city}</h2>
-      <p><strong>Weather:</strong> ${data.temperature}°C, ${data.description}</p>
+      <p><strong>Weather:</strong> ${data.temperature}°F, ${data.description}</p>
       <p><strong>Suggested Outfit:</strong><br>${data.outfit}</p>
     `;
   } catch (error) {
